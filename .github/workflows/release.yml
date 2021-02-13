@@ -1,4 +1,4 @@
-name: Release a new sephora_payments gem version
+name: Release a new gem version
 
 on: workflow_dispatch
 

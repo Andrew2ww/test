@@ -1,0 +1,12 @@
+name: Deploy gem
+
+on: workflow_dispatch
+
+jobs:
+  run_deploy:
+    name: Run deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploying
+      run: echo Rubocop completed  
