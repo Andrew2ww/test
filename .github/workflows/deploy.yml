@@ -8,5 +8,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: 'deployment pending'
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'pending'
+        token: '${{ github.token }}'
+
     - name: Deploying
-      run: echo Rubocop completed  
+      run: echo Deploy completed
+
+    - name: 'deployment success'
+      if: success()
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'success'
+        token: '${{ github.token }}'
+
+    - name: 'deployment failure'
+      if: failure()
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'failure'
+        token: '${{ github.token }}'
