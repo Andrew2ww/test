@@ -1,16 +1,29 @@
-name: Deploy gem
-
+name: deploy
 on:
-  push:
-    branches:
-      - main
+  ['deployment']
 
 jobs:
-  run_deploy:
-    name: Run deploy
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - name: 'deployment pending'
+        uses: 'deliverybot/deployment-status@master'
+        with:
+          state: 'pending'
+          token: '${{ github.token }}'
+      - uses: actions/checkout@v2
 
-    - name: 'deployment pending'
-      run: echo Hi
+      - name: deploy
+        run: echo ${{ github.event.deployment.params.param }}
+      - name: 'deployment success'
+        if: success()
+        uses: 'deliverybot/deployment-status@master'
+        with:
+          state: 'success'
+          token: '${{ github.token }}'
+      - name: 'deployment failure'
+        if: failure()
+        uses: 'deliverybot/deployment-status@master'
+        with:
+          state: 'failure'
+          token: '${{ github.token }}'
