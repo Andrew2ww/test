@@ -1,15 +1,15 @@
 development:
   environment: development
   params:
-    param: 'd valluuee'
+    param: 'dev valluuee'
 
 staging:
   environment: staging
   params:
-    param: 's valluuee'
+    param: 'stag valluuee'
 
 production:
   environment: production
   production_environment: true
   params:
-    param: 'p valluuee'
+    param: 'prod valluuee'
