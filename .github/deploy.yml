@@ -1,15 +1,24 @@
 development:
   environment: development
-  params:
+  payload:
     param: 'dev valluuee'
+    ref: ${{ ref }}
+    sha: ${{ sha }}
+    short_sha: ${{ short_sha }}
+    pr: ${{ pr }}
+    target: ${{ target }}
+    owner: ${{ owner }}
+    repo: ${{ repo }}
+    pull_request: ${{ pull_request }}
+    commit: ${{ commit }}
 
 staging:
   environment: staging
-  params:
+  payload:
     param: 'stag valluuee'
 
 production:
   environment: production
   production_environment: true
-  params:
+  payload:
     param: 'prod valluuee'

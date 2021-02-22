@@ -1,29 +1,38 @@
 name: deploy
-on:
-  ['deployment']
+on: deployment
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 'deployment pending'
-        uses: 'deliverybot/deployment-status@master'
+      - name: deployment pending
+        uses: deliverybot/deployment-status@master
         with:
-          state: 'pending'
-          token: '${{ github.token }}'
+          state: pending
+          token: ${{ github.token }}
       - uses: actions/checkout@v2
 
       - name: deploy
-        run: echo ${{ github.event.deployment.params.param }}
-      - name: 'deployment success'
+        run: |
+        echo ${{ github.event.deployment.payload.param }}
+        echo ${{ github.event.deployment.payload.ref }}
+        echo ${{ github.event.deployment.payload.sha }}
+        echo ${{ github.event.deployment.payload.short_sha }}
+        echo ${{ github.event.deployment.payload.pr }}
+        echo ${{ github.event.deployment.payload.target }}
+        echo ${{ github.event.deployment.payload.owner }}
+        echo ${{ github.event.deployment.payload.repo }}
+        echo ${{ github.event.deployment.payload.pull_request }}
+        echo ${{ github.event.deployment.payload.commit }}
+      - name: deployment success
         if: success()
-        uses: 'deliverybot/deployment-status@master'
+        uses: deliverybot/deployment-status@master
         with:
-          state: 'success'
-          token: '${{ github.token }}'
-      - name: 'deployment failure'
+          state: success
+          token: ${{ github.token }}
+      - name: deployment failure
         if: failure()
-        uses: 'deliverybot/deployment-status@master'
+        uses: deliverybot/deployment-status@master
         with:
-          state: 'failure'
-          token: '${{ github.token }}'
+          state: failure
+          token: ${{ github.token }}
