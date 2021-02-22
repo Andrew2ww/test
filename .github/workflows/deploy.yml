@@ -14,16 +14,16 @@ jobs:
 
       - name: deploy
         run: |
-        echo ${{ github.event.deployment.payload.param }}
-        echo ${{ github.event.deployment.payload.ref }}
-        echo ${{ github.event.deployment.payload.sha }}
-        echo ${{ github.event.deployment.payload.short_sha }}
-        echo ${{ github.event.deployment.payload.pr }}
-        echo ${{ github.event.deployment.payload.target }}
-        echo ${{ github.event.deployment.payload.owner }}
-        echo ${{ github.event.deployment.payload.repo }}
-        echo ${{ github.event.deployment.payload.pull_request }}
-        echo ${{ github.event.deployment.payload.commit }}
+          echo ${{ github.event.deployment.payload.param }}
+          echo ${{ github.event.deployment.payload.ref }}
+          echo ${{ github.event.deployment.payload.sha }}
+          echo ${{ github.event.deployment.payload.short_sha }}
+          echo ${{ github.event.deployment.payload.pr }}
+          echo ${{ github.event.deployment.payload.target }}
+          echo ${{ github.event.deployment.payload.owner }}
+          echo ${{ github.event.deployment.payload.repo }}
+          echo ${{ github.event.deployment.payload.pull_request }}
+          echo ${{ github.event.deployment.payload.commit }}
       - name: deployment success
         if: success()
         uses: deliverybot/deployment-status@master
