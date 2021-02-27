@@ -1,0 +1,16 @@
+name: show-checkout
+
+on: workflow_dispatch
+
+jobs:
+  rspecs:
+    name: Show checkout
+    runs-on: ubuntu-latest
+    steps:
+    - name: Show current project
+      run: ls -al
+
+    - uses: actions/checkout@v2
+
+    - name: Show current project
+      run: ls -al
