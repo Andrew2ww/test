@@ -26,7 +26,7 @@ jobs:
   #     - name: Run non-existent command
   #       run: errrr
 
-  deploy:
+  deploy-readiness-check:
     runs-on: ubuntu-latest
     needs: [rspecs, tests]
     if: github.ref == 'refs/heads/master'
