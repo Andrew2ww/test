@@ -14,11 +14,13 @@ development:
 
 staging:
   environment: staging
+  required_contexts: ['test']
   payload:
     param: 'stag valluuee'
 
 production:
   environment: production
   production_environment: true
+  required_contexts: ['test', 'deliverybot/promotion']
   payload:
     param: 'prod valluuee'
