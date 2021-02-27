@@ -7,40 +7,40 @@ jobs:
     name: Rspecs tests
     runs-on: ubuntu-latest
     steps:
-    - name: Run setup
-      run: echo 'Some setup finished'
-    - name: Run rspecs
-      run: echo 'Rspecs finished successfully'
+      - name: Run setup
+        run: echo 'Some setup finished'
+      - name: Run rspecs
+        run: echo 'Rspecs finished successfully'
 
   tests:
     runs-on: ubuntu-latest
     steps:
-    - name: Run setup and test
-      run: |
-        echo 'Some setup finished'
-        echo 'Tested successfully'
+      - name: Run setup and test
+        run: |
+          echo 'Some setup finished'
+          echo 'Tested successfully'
 
   failed:
     runs-on: ubuntu-latest
     steps:
-    - name: Run non-existent command
-      run: errrr
+      - name: Run non-existent command
+        run: errrr
 
   deploy:
     runs-on: ubuntu-latest
     needs: [rspecs, tests]
     if: github.ref == 'refs/heads/master'
     steps:
-    - name: Deploy app to production
-      run: |
-        echo 'Precompile finished'
-        echo 'Deployed successfully'
+      - name: Deploy app to production
+        run: |
+          echo 'Precompile finished'
+          echo 'Deployed successfully'
 
   failed-deploy:
     runs-on: ubuntu-latest
     needs: [rspecs, tests, failed]
     steps:
-    - name: Deploy app to production
-      run: |
-        echo 'Precompile finished'
-        echo 'Deployed successfully'
+      - name: Deploy app to production
+        run: |
+          echo 'Precompile finished'
+          echo 'Deployed successfully'
